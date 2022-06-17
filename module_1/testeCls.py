@@ -1,3 +1,5 @@
+# primeiros comandos em Python
+
 import os
 
 while True:
@@ -14,3 +16,4 @@ while True:
     os.system('cls')
   else:
     os.system('clear')
+# não funcionou como esperado, mas está igual ao apresentado.
