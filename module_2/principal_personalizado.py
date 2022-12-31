@@ -67,32 +67,35 @@ while True :
             print(money_slips)
         elif option_typed == '2' :
             value_typed = input('Digite o valor a ser sacado: ')
+
+            if int(value_typed) > accounts_list[account_typed]['value'] :
+                print ('Valor não disponível em conta')
+            else:
+                money_slips_users = {}
+                value_int = int(value_typed)
+
+                # o operador // extrai apenas o cociente inteiro da divisão, não exibindo o resto
+                if value_int // 100 > 0 and value_int // 100 <= money_slips['100'] :
+                    money_slips_users['100'] = value_int // 100
+                    value_int -= value_int // 100 * 100
+
+                if value_int // 50 > 0 and value_int // 50 <= money_slips['50'] :
+                    money_slips_users['50'] = value_int // 50
+                    value_int -= value_int // 50 * 50
+
+                if value_int // 20 > 0 and value_int // 20 <= money_slips['20'] :
+                    money_slips_users['20'] = value_int // 20
+                    value_int -= value_int // 20 * 20  
+
+                if value_int != 0 :
+                    print('O Caixa não tem cédulas disponíveis para este valor.')  
+
+                else :
+                    for money_bill in money_slips_users :
+                        money_slips[money_bill] -= money_slips_users[money_bill]
                         
-            money_slips_users = {}
-            value_int = int(value_typed)
-
-            # o operador // extrai apenas o cociente inteiro da divisão, não exibindo o resto
-            if value_int // 100 > 0 and value_int // 100 <= money_slips['100'] :
-                money_slips_users['100'] = value_int // 100
-                value_int -= value_int // 100 * 100
-
-            if value_int // 50 > 0 and value_int // 50 <= money_slips['50'] :
-                money_slips_users['50'] = value_int // 50
-                value_int -= value_int // 50 * 50
-
-            if value_int // 20 > 0 and value_int // 20 <= money_slips['20'] :
-                money_slips_users['20'] = value_int // 20
-                value_int -= value_int // 20 * 20  
-
-            if value_int != 0 :
-                print('O Caixa não tem cédulas disponíveis para este valor.')  
-
-            else :
-                for money_bill in money_slips_users :
-                    money_slips[money_bill] -= money_slips_users[money_bill]
-                    
-                print('Retire sus notas: ')
-                print(money_slips_users)
+                    print('Retire sus notas: ')
+                    print(money_slips_users)
 
     else: 
         print('Conta inválida')
