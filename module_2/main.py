@@ -88,6 +88,7 @@ while True :
                 print('O Caixa não tem cédulas disponíveis para este valor.')  
 
             else :
+                # passo que calcula a quantidade de notas a serem descontadas do caixa
                 for money_bill in money_slips_users :
                     money_slips[money_bill] -= money_slips_users[money_bill]
                     
